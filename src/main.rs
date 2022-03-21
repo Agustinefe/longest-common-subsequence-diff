@@ -5,6 +5,9 @@ use std::io::prelude::*;
 use std::io::BufReader;
 use std::path::Path;
 
+
+/// Reads the .txt file and returns a vector
+/// with every line.
 fn read_file_lines(ruta_de_archivo: &str) -> Vec<String> {
     let path = Path::new(ruta_de_archivo);
     let display = path.display();
@@ -43,6 +46,11 @@ fn get_longest_common_subsequence_diff(x: String, y: String) -> String {
     )
 }
 
+/// Prints the diff between the two strings passed,
+/// after building the LCS grid.
+/// 
+/// Red background: the character has been removed
+/// Green background: the character has been inserted
 fn print_diff(grid: &Vec<Vec<i32>>, x_chars: &Vec<char>, y_chars: &Vec<char>, i: usize, j: usize) {
     if i > 0 && j > 0 && x_chars[i - 1] == y_chars[j - 1] {
         print_diff(grid, x_chars, y_chars, i - 1, j - 1);
@@ -58,6 +66,11 @@ fn print_diff(grid: &Vec<Vec<i32>>, x_chars: &Vec<char>, y_chars: &Vec<char>, i:
     }
 }
 
+/// Returns the diff string between the two strings passed,
+/// after building the LCS grid.
+/// 
+/// -c: the character 'c' has been removed
+/// +c: the character 'c' has been inserted.
 #[allow(dead_code)]
 fn build_diff(
     grid: &Vec<Vec<i32>>,
