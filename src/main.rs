@@ -19,7 +19,6 @@ fn read_file_lines(ruta_de_archivo: &str) -> Vec<String> {
         .collect()
 }
 
-
 fn print_longest_common_subsequence_diff(x: String, y: String) {
     let x_chars: Vec<char> = x.chars().collect();
     let y_chars: Vec<char> = y.chars().collect();
@@ -28,6 +27,7 @@ fn print_longest_common_subsequence_diff(x: String, y: String) {
     print_diff(&grid, &x_chars, &y_chars, x_chars.len(), y_chars.len());
 }
 
+#[allow(dead_code)]
 fn get_longest_common_subsequence_diff(x: String, y: String) -> String {
     let x_chars: Vec<char> = x.chars().collect();
     let y_chars: Vec<char> = y.chars().collect();
@@ -58,6 +58,7 @@ fn print_diff(grid: &Vec<Vec<i32>>, x_chars: &Vec<char>, y_chars: &Vec<char>, i:
     }
 }
 
+#[allow(dead_code)]
 fn build_diff(
     grid: &Vec<Vec<i32>>,
     x_chars: &Vec<char>,
@@ -97,15 +98,15 @@ fn build_lcs_grid(x_chars: &Vec<char>, y_chars: &Vec<char>) -> Vec<Vec<i32>> {
 }
 
 fn main() {
-    let _texto_uno = read_file_lines("src/ejemplo1.txt");
-    let _texto_dos = read_file_lines("src/ejemplo2.txt");
+    let texto_uno = read_file_lines("src/ejemplo1.txt");
+    let texto_dos = read_file_lines("src/ejemplo2.txt");
 
-    let frase_uno = "hola soy agus chau";
-    let frase_dos = "buenas soy pablo chau";
+    let frase_uno = &texto_uno[0];
+    let frase_dos = &texto_dos[0];
 
-    println!("{}", frase_uno);
-    println!("{}", frase_dos);
-
+    println!("Frase vieja: {}", frase_uno);
+    println!("Frase nueva: {}", frase_dos);
+    print!("Diff: ");
     print_longest_common_subsequence_diff(String::from(frase_uno), String::from(frase_dos));
     println!("");
 }
